@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>New Game</h1>
+  <p>What is the longest word you can find with the following letters?</p>
+  <div class="letters">
+    <ul>
+      <% @letters.each do |letter| %>
+        <li> <%= letter %> </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="word">
+    <form method="post" action="/score" data-turbo="false">
+      <input type="text" name="word">
+      <%= hidden_field_tag 'letters', @letters %>
+      <input type="submit" value="Play">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    </form>
+
+  </div>
+</div>
